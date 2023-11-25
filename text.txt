@@ -1,0 +1,381 @@
+Microsoft Windows [Version 10.0.17763.1577]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+C:\Users\ELCOT>cd C:\Program Files\MySQL\MySQL Server 8.0\bin
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql -u root -p
+Enter password: ************
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.35 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database store;
+Query OK, 1 row affected (0.99 sec)
+
+mysql> use store;
+Database changed
+mysql> tee d:/sql assingment;
+Logging to file 'd:/sql assingment'
+mysql> create table market(
+    -> cad,
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+)' at line 2
+mysql> create table market(
+    -> cid int primarykey,
+    -> cname varchar(40),
+    -> city varchar(30),
+    -> phone bigint);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'primarykey,
+cname varchar(40),
+city varchar(30),
+phone bigint)' at line 2
+mysql> create table market(
+    -> cid int primary key,
+    -> cname varchar(40),
+    -> city varchar(30),
+    -> phone bigint);
+Query OK, 0 rows affected (2.84 sec)
+
+mysql> desc market;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| cid   | int         | NO   | PRI | NULL    |       |
+| cname | varchar(40) | YES  |     | NULL    |       |
+| city  | varchar(30) | YES  |     | NULL    |       |
+| phone | bigint      | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.40 sec)
+
+mysql> insert market values(11,"arun","dindigul",1122334455);
+Query OK, 1 row affected (0.23 sec)
+
+mysql> select * from market;
++-----+-------+----------+------------+
+| cid | cname | city     | phone      |
++-----+-------+----------+------------+
+|  11 | arun  | dindigul | 1122334455 |
++-----+-------+----------+------------+
+1 row in set (0.04 sec)
+
+mysql> insert market values(12,"dhoni","chennai",7777777777),
+    -> insert market values(13,"virat",bangalore",1818181818),
+    "> insert market values(14,,"raina",chennaii"3333333333),
+    -> insert market values(14,,"raina",);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert market values(13,"virat",bangalore",1818181818),
+insert market values(14,' at line 2
+mysql> insert market values(12,"dhoni","chennai",7777777777),
+    -> insert market values(13,"virat","bangalore",1818181818),
+    -> insert market values(14,,"raina","chennaii"3333333333),
+    -> insert market values(15,"jadeja","cbe",888888888);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert market values(13,"virat","bangalore",1818181818),
+insert market values(14' at line 2
+mysql> insert market values(12,"dhoni","chennai",7777777777),
+    -> insert market values(13,"virat",bangalore",1818181818),
+    "> insert market values(14,,"raina",chennaii",3333333333),
+    -> insert market values(15,"jadeja","cbe",888888888);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert market values(13,"virat",bangalore",1818181818),
+insert market values(14,' at line 2
+mysql> insert market values(12,"dhoni","chennai",7777777777),
+    -> insert market values(13,"virat","bangalore",1818181818),
+    -> insert market values(14,,"raina",chennaii",3333333333),
+    "> insert market values(15,"jadeja","cbe",888888888);
+    "> ;
+    "> ^C
+mysql> insert market values(12,"dhoni","chennai",7777777777),
+    -> insert market values(13,"virat","bangalore",1818181818),
+    -> insert market values(14,,"raina",chennaii",3333333333),
+    "> insert market values(15,"jadeja","cbe",888888888);
+    "> ^C
+mysql> insert market values(12,"dhoni","chennai",7777777777);
+Query OK, 1 row affected (0.20 sec)
+
+mysql> insert market values(15,"jadeja","cbe",888888888);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert market values(14,,"raina",chennaii",3333333333),
+    "> insert market values(13,"virat","bangalore",1818181818);
+    "> ^C
+mysql> insert market values(14,,"raina",chennaii",3333333333);
+    "> ^C
+mysql> insert market values(13,"virat","bangalore",1818181818);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert market values(14,,"raina",chennaii",3333333333);
+    ">
+    "> insert market values(14,,"raina","chennaii",3333333333);
+    "> ^C
+mysql> insert market values(14,,"raina","chennaii",3333333333);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',"raina","chennaii",3333333333)' at line 1
+mysql> insert market values(14,"raina","chennaii",3333333333);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select * from market;
++-----+--------+-----------+------------+
+| cid | cname  | city      | phone      |
++-----+--------+-----------+------------+
+|  11 | arun   | dindigul  | 1122334455 |
+|  12 | dhoni  | chennai   | 7777777777 |
+|  13 | virat  | bangalore | 1818181818 |
+|  14 | raina  | chennaii  | 3333333333 |
+|  15 | jadeja | cbe       |  888888888 |
++-----+--------+-----------+------------+
+5 rows in set (0.00 sec)
+
+mysql> create table salesman(
+    -> sid int primary key,
+    -> sname varchar(30) not null,
+    -> scity varchar(40) not null,
+    -> phone bigint not null);
+Query OK, 0 rows affected (0.70 sec)
+
+mysql> insert salesman values(21,"ashock","tirpur",897887789);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert salesman values(22,"daniel","kumari",123456677);
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert salesman values(23,"jose","goa",1234566765);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert salesman values(24,"duke","india",8776556778);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert salesman values(25,"vikram","tamilnadu",667565454);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> select * from salesman:
+    -> :
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':
+:' at line 1
+mysql> select * from salesman;
++-----+--------+-----------+------------+
+| sid | sname  | scity     | phone      |
++-----+--------+-----------+------------+
+|  21 | ashock | tirpur    |  897887789 |
+|  22 | daniel | kumari    |  123456677 |
+|  23 | jose   | goa       | 1234566765 |
+|  24 | duke   | india     | 8776556778 |
+|  25 | vikram | tamilnadu |  667565454 |
++-----+--------+-----------+------------+
+5 rows in set (0.00 sec)
+
+mysql> create table product(
+    -> pid int primary key,
+    -> pname varchar(40),
+    -> :
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':' at line 4
+mysql> create table product(
+    -> pid int primary key not null,
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2
+mysql> create table product(
+    -> pid int primary key,
+    -> pname varchar(40) not null,
+    -> pprice int not null);
+Query OK, 0 rows affected (0.60 sec)
+
+mysql> insert product values(01,"apple"100),
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '100),' at line 1
+mysql> insert product values(01,"apple"100);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '100)' at line 1
+mysql> insert product values(01,"apple",100);
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert product values(02,"orange",200);
+Query OK, 1 row affected (0.15 sec)
+
+mysql> insert product values(03,"mango",300);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert product values(04,"bananaa",400);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert product values(05,"tomoto"600);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '600)' at line 1
+mysql> insert product values(05,"tomoto",600);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> desc market;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| cid   | int         | NO   | PRI | NULL    |       |
+| cname | varchar(40) | YES  |     | NULL    |       |
+| city  | varchar(30) | YES  |     | NULL    |       |
+| phone | bigint      | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> desc salesman;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| sid   | int         | NO   | PRI | NULL    |       |
+| sname | varchar(30) | NO   |     | NULL    |       |
+| scity | varchar(40) | NO   |     | NULL    |       |
+| phone | bigint      | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc product;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| pid    | int         | NO   | PRI | NULL    |       |
+| pname  | varchar(40) | NO   |     | NULL    |       |
+| pprice | int         | NO   |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table product add column quantity int not null;
+Query OK, 0 rows affected (0.58 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc product;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| pid      | int         | NO   | PRI | NULL    |       |
+| pname    | varchar(40) | NO   |     | NULL    |       |
+| pprice   | int         | NO   |     | NULL    |       |
+| quantity | int         | NO   |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+mysql> update product set quantity=12 where pname='apple';
+Query OK, 1 row affected (0.17 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from product;
++-----+---------+--------+----------+
+| pid | pname   | pprice | quantity |
++-----+---------+--------+----------+
+|   1 | apple   |    100 |       12 |
+|   2 | orange  |    200 |        0 |
+|   3 | mango   |    300 |        0 |
+|   4 | bananaa |    400 |        0 |
+|   5 | tomoto  |    600 |        0 |
++-----+---------+--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> alter table product rename column pprice to new rupees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'rupees' at line 1
+mysql> alter table product rename column pprice to new_rupees;
+Query OK, 0 rows affected (0.80 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from product;
++-----+---------+------------+----------+
+| pid | pname   | new_rupees | quantity |
++-----+---------+------------+----------+
+|   1 | apple   |        100 |       12 |
+|   2 | orange  |        200 |        0 |
+|   3 | mango   |        300 |        0 |
+|   4 | bananaa |        400 |        0 |
+|   5 | tomoto  |        600 |        0 |
++-----+---------+------------+----------+
+5 rows in set (0.00 sec)
+
+mysql>  update product set price=500 where pname='orage';
+ERROR 1054 (42S22): Unknown column 'price' in 'field list'
+mysql> update product set new
+    -> ^C
+mysql> update product set new_rupees=500 where pname='orage';
+Query OK, 0 rows affected (0.05 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> select * from product;
++-----+---------+------------+----------+
+| pid | pname   | new_rupees | quantity |
++-----+---------+------------+----------+
+|   1 | apple   |        100 |       12 |
+|   2 | orange  |        200 |        0 |
+|   3 | mango   |        300 |        0 |
+|   4 | bananaa |        400 |        0 |
+|   5 | tomoto  |        600 |        0 |
++-----+---------+------------+----------+
+5 rows in set (0.01 sec)
+
+mysql> update product set new_rupees=500 where pname='orange';
+Query OK, 1 row affected (0.14 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from product;
++-----+---------+------------+----------+
+| pid | pname   | new_rupees | quantity |
++-----+---------+------------+----------+
+|   1 | apple   |        100 |       12 |
+|   2 | orange  |        500 |        0 |
+|   3 | mango   |        300 |        0 |
+|   4 | bananaa |        400 |        0 |
+|   5 | tomoto  |        600 |        0 |
++-----+---------+------------+----------+
+5 rows in set (0.00 sec)
+
+mysql> delete from market where cid=14;
+Query OK, 1 row affected (0.22 sec)
+
+mysql> desc markrt;
+ERROR 1146 (42S02): Table 'store.markrt' doesn't exist
+mysql> desc market;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| cid   | int         | NO   | PRI | NULL    |       |
+| cname | varchar(40) | YES  |     | NULL    |       |
+| city  | varchar(30) | YES  |     | NULL    |       |
+| phone | bigint      | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> select * from market;
++-----+--------+-----------+------------+
+| cid | cname  | city      | phone      |
++-----+--------+-----------+------------+
+|  11 | arun   | dindigul  | 1122334455 |
+|  12 | dhoni  | chennai   | 7777777777 |
+|  13 | virat  | bangalore | 1818181818 |
+|  15 | jadeja | cbe       |  888888888 |
++-----+--------+-----------+------------+
+4 rows in set (0.00 sec)
+
+mysql> alter table market modify column cname varchar(60);
+Query OK, 0 rows affected (0.31 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from market;
++-----+--------+-----------+------------+
+| cid | cname  | city      | phone      |
++-----+--------+-----------+------------+
+|  11 | arun   | dindigul  | 1122334455 |
+|  12 | dhoni  | chennai   | 7777777777 |
+|  13 | virat  | bangalore | 1818181818 |
+|  15 | jadeja | cbe       |  888888888 |
++-----+--------+-----------+------------+
+4 rows in set (0.00 sec)
+
+mysql> desc market;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| cid   | int         | NO   | PRI | NULL    |       |
+| cname | varchar(60) | YES  |     | NULL    |       |
+| city  | varchar(30) | YES  |     | NULL    |       |
+| phone | bigint      | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql>
